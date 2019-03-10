@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> {
     overlays = [
-      (import ./nix/overlays/disable-gitlib-tests.nix)
+      (import ./nix/overlays/haskell-package-modifications.nix)
     ];
   }
 }:
