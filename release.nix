@@ -1,6 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
-let
-  inherit (pkgs.haskellPackages) callPackage;
-in {
-  haskell-src-meta = callPackage ./haskell-src-meta { } ;
+{ pkgs ? import ./nix/pins/pkgs.nix { }}:
+{
+  inherit (pkgs.haskellPackages) haskell-src-meta;
 }
