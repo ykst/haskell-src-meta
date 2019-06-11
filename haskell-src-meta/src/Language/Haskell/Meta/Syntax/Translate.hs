@@ -215,6 +215,7 @@ instance ToPat (Exts.Pat l) where
   toPat (Exts.PParen _ p) = TH.ParensP (toPat p)
   -- TODO: move toFieldPat to top level defn
   toPat (Exts.PRec _ n pfs) = let toFieldPat (Exts.PFieldPat _ n' p) = (toName n', toPat p)
+                                  toFieldPat (Exts.PFieldPun _ n') = (toName n', TH.VarP (toName n'))
                                   toFieldPat h = todo "toFieldPat" h
                             in TH.RecP (toName n) (fmap toFieldPat pfs)
   toPat (Exts.PAsPat _ n p) = TH.AsP (toName n) (toPat p)
